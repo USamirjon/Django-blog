@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %} Last articles {% endblock %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Main</title>
+</head>
+<body>
+
+<form action="{% url 'articles:create_article' %}" method="POST">
+    {% csrf_token %}
+    <br>
+    <input type="text" required placeholder="Введите название статьи" name="article_name"><br><br>
+    <textarea name="article_text" required cols="30" rows="10"></textarea><br><br>
+    <button class="btn btn-dark btn-outline-light" type="submit">Создать данную статью.=)</button>
+</form>
+</body>
+
+{% endblock %}

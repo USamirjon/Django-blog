@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %} Last articles {% endblock %}
+{% block content %}
+{{user.login}}
+{% if latest_articles_list %}
+<div class="offset-1">
+    <div class="row mb-2 text-center">
+        {% for a in latest_articles_list %}
+        <div class="card mb-4 shadow-sm mx-1 col-5">
+            <div class="card-header">
+                <h4 class="my-0 fw-normal">{{a.article_title}}</a><br></h4>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mt-3 mb-4">
+                    <li></li>
+                </ul>
+                <a href="{% url 'articles:detail' a.id %}">
+                    <button type="button" class="w-100 btn btn-lg btn-outline-primary">подробнее</button>
+                </a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+</div>
+{% else %}
+Статьи не найдены ;-(
+{% endif %}
+<br>
+<a class="btn btn-dark btn-outline-light" href="{% url 'articles:create' %}">Создать новую статью.</a>
+
+{% endblock %}
